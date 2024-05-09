@@ -38,9 +38,18 @@ struct ContentView: View {
                     Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
                     }
                 
-                    Section("Daily Coffee Intake") {
-                    Stepper("^[\(coffeeAmount) cup](inflect: true)", value:$coffeeAmount, in: 0...20)
+                Section("Daily Coffee Intake") {
+                    Picker("^[\(coffeeAmount) cup](inflect: true)",
+                           selection: $coffeeAmount,
+                           content: {
+                        ForEach(0..<21) {
+                            Text("\($0)")
+                        }
                     }
+                    )
+                }
+//                    Stepper("^[\(coffeeAmount) cup](inflect: true)", value:$coffeeAmount, in: 0...20)
+//                    }
                 
                 
             }
